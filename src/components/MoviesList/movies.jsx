@@ -1,43 +1,14 @@
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { getFilm } from 'api/fetchFilm';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Змінено імпорт
+import {
+  ListOfFilm,
+  InputWrapper,
+  Container,
+  ErrorText,
+} from './movies.styled.jsx';
 
-const ListOfFilm = styled.ul`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  li {
-    font-size: 18px;
-    font-weight: 600;
-  }
-`;
-
-const InputWrapper = styled.form`
-  box-shadow: 0px 10px 10px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #edf3fb;
-  input {
-    outline: none;
-  }
-  label {
-    color: grey;
-  }
-`;
-
-const Container = styled.section`
-  padding: 20px;
-  background-color: #fff;
-`;
-
-const ErrorText = styled.p`
-  margin-top: 20px;
-  color: red;
-`;
+import { getFilm } from '../../api/fetchFilm'; // Шлях на один рівень вище (виходить з папки MoviesList)
 
 const Movies = () => {
   const [searchFilm, setSearchFilm] = useSearchParams();
