@@ -3,10 +3,11 @@ import Layout from './Layout';
 import { lazy } from 'react';
 
 const Home = lazy(() => import('../pages/home'));
-const Movies = lazy(() => import('./MoviesList/movies'));
-const FilmDetails = lazy(() => import('../components/FilmDetails/FilmDetails'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const FilmDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('../components/Cast/Cast'));
-const Reviews = lazy(() => import('..//components/Reviews/reviews'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const UseNavigates = lazy(() => import('./UseNavigate/UseNavigate'));
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
+        <Route path="*" element={<UseNavigates />} />
       </Route>
     </Routes>
   );

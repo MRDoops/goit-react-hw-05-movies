@@ -12,9 +12,9 @@ import {
   Title,
   WrapperAdditional,
   WrapperMain,
-} from './FilmDetails.styled';
+} from './MovieDetails.styled';
 
-import defaultPicture from '../Cast/avatar-picture.png';
+import defaultPicture from '../../components/Cast/avatar-picture.png';
 
 const FilmDetails = () => {
   const { id } = useParams();

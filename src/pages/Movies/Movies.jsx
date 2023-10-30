@@ -1,14 +1,15 @@
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Змінено імпорт
+import { Link } from 'react-router-dom';
 import {
   ListOfFilm,
-  InputWrapper,
+  // InputWrapper,
   Container,
   ErrorText,
-} from './movies.styled.jsx';
+} from './Movies.styled.jsx';
+import SearchForm from '../../components/HandleSearch/HandleSearch.jsx';
 
-import { getFilm } from '../../api/fetchFilm'; // Шлях на один рівень вище (виходить з папки MoviesList)
+import { getFilm } from '../../api/fetchFilm.js'; // Шлях на один рівень вище (виходить з папки MoviesList)
 
 const Movies = () => {
   const [searchFilm, setSearchFilm] = useSearchParams();
@@ -40,20 +41,13 @@ const Movies = () => {
     fetchFilm();
   });
 
-  const updateSearch = event => {
-    const filmNameValue = event.target.value;
-    if (filmNameValue === '') {
-      return setSearchFilm({});
-    }
-    setSearchFilm({ filmName: filmNameValue });
+  const handleSearch = filmName => {
+    setSearchFilm({ filmName });
   };
 
   return (
     <Container>
-      <InputWrapper>
-        <input type="text" value={filmName} onChange={updateSearch} />
-        <label> Пошук фільму за ключовим словом</label>
-      </InputWrapper>
+      <SearchForm onSubmit={handleSearch} />
 
       {status === 'rejected' && <ErrorText>{error}</ErrorText>}
 
